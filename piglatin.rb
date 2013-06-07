@@ -1,7 +1,8 @@
 
 class PigLatinConverter
-	def self.convert(word)
+  def self.convert(word)
     letter = word[0].downcase!
+    vowels = %w[a e i o u]
     if letter == 'a'
       puts word
     elsif letter == 'e'
@@ -13,7 +14,8 @@ class PigLatinConverter
     elsif letter == 'u'
       puts word
     else
-      vowels = %w[a e i o u]
+
+      
       consonant = []
       word.each_char do |c|
         if vowels.include? c
@@ -25,7 +27,7 @@ class PigLatinConverter
       x = consonant.length
       puts word[x, 100].capitalize + consonant.join("").downcase + "ay"
     end 
-	end 
+  end 
 end
 
 PigLatinConverter.convert("Apple")
@@ -34,4 +36,3 @@ PigLatinConverter.convert("Computer")
 PigLatinConverter.convert("Elephant")
 PigLatinConverter.convert("Quiet")
 PigLatinConverter.convert("Three")
-
