@@ -1,23 +1,28 @@
 
 class PigLatinConverter
   def self.convert(word)
-    letter = word[0].downcase!
+    word = word.downcase
     vowels = %w[a e i o u]
     consonant = []
-    word.each_char do |a|
-      if vowels.include? a
-        puts word
-      else
-        consonant.push a
+    if vowels.include? word[0]
+      puts word.capitalize
+    else
+      word.each_char do |a|
+        if vowels.include? a
+          break
+        else
+          consonant.push a
+        end
         x = consonant.length
-        puts word[x, 100].capitalize + consonant.join("").downcase + "ay"
+        puts word[x, 30].capitalize + consonant.join("").downcase + "ay"
       end
-    end   
+    end
   end 
 end 
 
-PigLatinConverter.convert("Apple")
-PigLatinConverter.convert("Pop")
+
+PigLatinConverter.convert("apple")
+PigLatinConverter.convert("pop")
 PigLatinConverter.convert("Computer")
 PigLatinConverter.convert("Elephant")
 PigLatinConverter.convert("Quiet")
