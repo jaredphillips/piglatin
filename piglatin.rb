@@ -16,8 +16,20 @@ class PigLatinConverter
     puts "\n\n\n"
     puts "What word do you want to convert?"
     word = gets.chomp
-    converter(word)
+    valid_word(word)
   end
+
+  def valid_word(word)
+    case word
+    when nil
+      puts "Not a valid word"
+    when " "
+      puts "Not a valid word"
+    else
+      converter(word)  
+    end
+  end
+
 
 
   def converter(word)
