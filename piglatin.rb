@@ -1,13 +1,30 @@
 
 class PigLatinConverter
 
+  attr_accessor :vowels, :consonant, :word
+
+  def initialize
+    @word = word
+    @vowels = %w[a e i o u]
+    @consonant = []
+  end
+
+  def user_interaction
+    puts "----------------------------------"
+    puts "Welcome to the Pig Latin Converter"
+    puts "----------------------------------"
+    puts "\n\n\n"
+    puts "What word do you want to convert?"
+    word = gets.chomp
+    converter(word)
+  end
 
 
-  def self.convert(word)
+  def converter(word)
     word = word.downcase
-    vowels = %w[a e i o u]
+    @vowels = %w[a e i o u]
     consonant = []
-    if vowels.include? word[0]
+    if @vowels.include? word[0]
       return word.capitalize
     else
       word.each_char do |a|
@@ -19,17 +36,13 @@ class PigLatinConverter
         x = consonant.length
         end_of_word = word[x..-1].capitalize
         first_consonant_set = consonant.join("").downcase
-        return end_of_word + first_consonant_set + "ay"
+        puts end_of_word + first_consonant_set + "ay"
       end
     end
   end 
 end 
 
-
-puts "What word do you want to convert?"
-word = gets.chomp
-
-puts PigLatinConverter.convert(word)
+PigLatinConverter.new.user_interaction
 
 
 
