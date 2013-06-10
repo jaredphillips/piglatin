@@ -10,10 +10,12 @@ class PigLatinConverter
   end
 
   def user_interaction
+    puts "\e[H\e[2J"
+    puts ""
     puts "----------------------------------"
     puts "Welcome to the Pig Latin Converter"
     puts "----------------------------------"
-    puts "\n\n\n"
+    puts "\n\n"
     puts "What word do you want to convert?"
     word = gets.chomp
     valid_word(word)
@@ -23,38 +25,47 @@ class PigLatinConverter
     case word
     when nil
       puts "Not a valid word"
-    when " "
+    when ""
       puts "Not a valid word"
     else
-      converter(word)  
+      starts_with_a_vowel(word)  
     end
   end
 
-
+  def starts_with_a_vowel(word)
+    word = word.downcase
+    if word.start_with?("a", "e", "i", "o", "u") 
+      display(word)
+    else
+      converter(word)
+    end
+  end
 
   def converter(word)
-    word = word.downcase
-    @vowels = %w[a e i o u]
-    consonant = []
-    if @vowels.include? word[0]
-      return word.capitalize
-    else
-      word.each_char do |a|
-        if vowels.include? a
-          break
-        else
-          consonant.push a
-        end
-        x = consonant.length
-        end_of_word = word[x..-1].capitalize
-        first_consonant_set = consonant.join("").downcase
-        puts end_of_word + first_consonant_set + "ay"
+    word.each_char do |a|
+      if vowels.include? a
+        break
+      else
+        consonant.push a
       end
+      x = consonant.length
+      end_of_word = word[x..-1].capitalize
+      first_consonant_set = consonant.join("").downcase
+      word = end_of_word + first_consonant_set + "ay"
+      display(word)
     end
   end 
+
+  def display(word)
+    puts "Calculating......"
+    puts "......."
+    puts "\n\n"
+    puts "Got it: #{word.capitalize}"
+    puts "\n\n"
+  end
 end 
 
-PigLatinConverter.new.user_interaction
+PigLatinConverter.new
 
 
 
