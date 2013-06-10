@@ -27,9 +27,9 @@ end
 
 
 puts "What word do you want to convert?"
-@word = gets.chomp
+word = gets.chomp
 
-puts PigLatinConverter.convert("#{@word}")
+puts PigLatinConverter.convert(word)
 
 
 
