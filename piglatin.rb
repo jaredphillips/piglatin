@@ -24,35 +24,40 @@ class PigLatinConverter
   def valid_word(word)
     case @word
     when nil
-      puts "Not a valid word"
+      not_a_valid_word
     when ""
-      puts "Not a valid word"
+      not_a_valid_word
     else
       starts_with_a_vowel(@word)  
     end
   end
 
+  def not_a_valid_word
+    puts "I can only convert a real word"
+  end
+
   def starts_with_a_vowel(word)
     word = word.downcase
     if word.start_with?("a", "e", "i", "o", "u") 
-      display(word)
+      display(@word)
     else
-      converter(word)
+      converter(@word)
     end
   end
 
   def converter(word)
-    @word.each_char do |a|
-      if vowels.include? a
+    puts @word
+    @word.each_char do |letter|
+      if vowels.include? letter
         break
       else
-        consonant.push a
+        consonant.push letter
       end
       x = consonant.length
-      end_of_word = word[x..-1].capitalize
+      end_of_word = @word[x..-1].capitalize
       first_consonant_set = consonant.join("").downcase
       @word = end_of_word + first_consonant_set + "ay"
-      display(word)
+      display(@word)
     end
   end 
 
@@ -65,7 +70,7 @@ class PigLatinConverter
   end
 end 
 
-# PigLatinConverter.new.user_interaction
+PigLatinConverter.new.user_interaction
 
 
 
