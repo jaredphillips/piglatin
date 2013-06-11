@@ -17,18 +17,18 @@ class PigLatinConverter
     puts "----------------------------------"
     puts "\n\n"
     puts "What word do you want to convert?"
-    word = gets.chomp
-    valid_word(word)
+    @word = gets.chomp
+    valid_word(@word)
   end
 
   def valid_word(word)
-    case word
+    case @word
     when nil
       puts "Not a valid word"
     when ""
       puts "Not a valid word"
     else
-      starts_with_a_vowel(word)  
+      starts_with_a_vowel(@word)  
     end
   end
 
@@ -42,7 +42,7 @@ class PigLatinConverter
   end
 
   def converter(word)
-    word.each_char do |a|
+    @word.each_char do |a|
       if vowels.include? a
         break
       else
@@ -51,7 +51,7 @@ class PigLatinConverter
       x = consonant.length
       end_of_word = word[x..-1].capitalize
       first_consonant_set = consonant.join("").downcase
-      word = end_of_word + first_consonant_set + "ay"
+      @word = end_of_word + first_consonant_set + "ay"
       display(word)
     end
   end 
@@ -65,7 +65,7 @@ class PigLatinConverter
   end
 end 
 
-PigLatinConverter.new
+# PigLatinConverter.new.user_interaction
 
 
 
