@@ -46,18 +46,17 @@ class PigLatinConverter
   end
 
   def converter(word)
-    puts @word
-    @word.each_char do |letter|
+    word.each_char do |letter|
       if vowels.include? letter
         break
       else
         consonant.push letter
       end
       x = consonant.length
-      end_of_word = @word[x..-1].capitalize
+      end_of_word = word[x..-1].capitalize
       first_consonant_set = consonant.join("").downcase
-      @word = end_of_word + first_consonant_set + "ay"
-      display(@word)
+      converted_word = end_of_word + first_consonant_set + "ay"
+      display(converted_word)
     end
   end 
 

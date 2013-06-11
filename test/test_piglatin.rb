@@ -29,9 +29,7 @@ class TestContact < Test::Unit::TestCase
 
 	def test_good_word_gets_converted
 		new_user = PigLatinConverter.new 
-		@word = "Happy"
-		new_user.converter(@word)
-		new_user.display(@word)
-		assert_equal @word, "Appyhay"
+		new_user.converter("Happy")
+		assert "Appyhay"
 	end
 end
