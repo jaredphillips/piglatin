@@ -19,5 +19,11 @@ class TestContact < Test::Unit::TestCase
 		new_user.valid_word(@word)
 	  assert_not_nil @word
 	end
-	
+
+	def test_for_invalid_word
+		new_user = PigLatinConverter.new 
+		@word = nil 
+		new_user.valid_word(@word)
+		assert "Not a valid word"
+	end
 end
